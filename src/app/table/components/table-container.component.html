@@ -1,0 +1,14 @@
+<div class="m-auto table-responsive">
+  <table class="table table-sm table-bordered align-middle">
+    <thead class="table-dark">
+      <ng-content select="tr" />
+    </thead>
+    <tbody *ngIf="templateBody">
+      <tr class="cell-hover" *ngFor="let item of rows; index as i">
+        <template
+          *ngTemplateOutlet="templateBody; context: { $implicit: item, index: i }"
+        ></template>
+      </tr>
+    </tbody>
+  </table>
+</div>

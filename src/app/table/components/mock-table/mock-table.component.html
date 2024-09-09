@@ -1,0 +1,25 @@
+<ng-container *ngIf="tableMockData$ | async as tableMockData">
+  <test-table-container [rows]="tableMockData">
+    <tr class="text-center">
+      <th *ngFor="let columnName of tableMockData[0] | objectKeys">
+        {{ columnName }}
+      </th>
+    </tr>
+    <ng-template let-item #templateBody>
+      <ng-container *ngFor="let keyValue of item | keyvalue">
+        <td testTableActiveCell
+            testTableKeyboardNavigation
+            class="p-2"
+        >
+          <input testElementEditableByKeyboard
+                 testElementEditableBlur
+                 [value]="keyValue.value"
+                 readonly
+                 type="text"
+                 class="text-center m-2"
+          />
+        </td>
+      </ng-container>
+    </ng-template>
+  </test-table-container>
+</ng-container>

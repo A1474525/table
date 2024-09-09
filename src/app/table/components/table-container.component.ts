@@ -6,10 +6,9 @@ import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
   standalone: true,
   imports: [NgIf, NgFor, NgTemplateOutlet],
   templateUrl: './table-container.component.html',
-  styleUrl: './table-container.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableContainerComponent<T> {
-  @Input() dataArray: ReadonlyArray<T> = [];
-  @ContentChild('target', { static: true }) templateVariable!: TemplateRef<unknown> | null;
+  @Input() rows: ReadonlyArray<T> = [];
+  @ContentChild('templateBody', { static: true }) templateBody?: TemplateRef<unknown> | null;
 }
